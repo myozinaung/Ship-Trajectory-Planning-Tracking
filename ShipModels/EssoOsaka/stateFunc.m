@@ -1,5 +1,5 @@
 function dxdt = stateFunc(t,x,u,p)
-wind_para = p(1:2);
+wind_para = p(1:2); % U_wind and Dir_wind
 
 %% Obtain variables
 psi   = x(3);
