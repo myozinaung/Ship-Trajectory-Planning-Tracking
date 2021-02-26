@@ -1,4 +1,4 @@
-function [x_ref, u_ref, t_ref] = refGenerator(t_now, t_end, grid_size0, soln, x, t_RefTraj, z_RefTraj, Type)
+function [x_ref, u_ref, t_ref] = generateRef(t_now, t_end, grid_size0, soln, x, t_RefTraj, z_RefTraj, Type)
 
 switch Type 
     case 'position' % POSITION-based Reference Generation %%

@@ -208,7 +208,7 @@ for t_now = t_start:t_step:t_SimEnd
     NLP_status(i) = soln_now(end).info.exitFlag;
     i = i + 1;
     % Compute the next state vector using the 4th Runge-Kutta-Gill method.
-    next_state_vec = rungeKuttaGill(t_now, state_vec(1:6), state_vec(7:8), t_step, para); % use the previous control sequence with time interpolation when control is not updating
+    next_state_vec = rungeKuttaGill(t_now, state_vec(1:6), state_vec(7:8), para, t_step, @stateFunc_EO); % use the previous control sequence with time interpolation when control is not updating
     % Only 1st u is applied --> each time step, the solution are kind of independent --> not smooth throughout the simulation
     
         
@@ -233,7 +233,7 @@ for t_now = t_start:t_step:t_SimEnd
         
 %         problem_now.func.bndObj = []; % remove min t_F
         
-       [x_ref, u_ref, t_ref] = refGenerator(t_now, t_end, grid_size0, soln, next_state_vec, t_RefTraj, z_RefTraj, 'position');
+       [x_ref, u_ref, t_ref] = generateRef(t_now, t_end, grid_size0, soln, next_state_vec, t_RefTraj, z_RefTraj, 'position');
         
         % if arrived inside the circle at the final point, use xF as xRef,
         % remove pathObj
@@ -253,7 +253,7 @@ for t_now = t_start:t_step:t_SimEnd
         problem_now.bounds.initialState.low = [next_state_vec; -deltaMax;rpsMin];
         problem_now.bounds.initialState.upp = [next_state_vec; deltaMax; rpsMax];
 
-        [t_guess, z_guess, u_guess] = guessGenerator(t_ref, t_end, soln, soln_now, 'auto');
+        [t_guess, z_guess, u_guess] = generateGuess(t_ref, t_end, soln, soln_now, 'auto');
         problem_now.guess.time    = t_guess;
         problem_now.guess.state   = z_guess;
         problem_now.guess.control = u_guess;

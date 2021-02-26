@@ -19,7 +19,7 @@ for i = 1:length(t)
 %     dxdt_mat(1:6,i) = stateFunc_EO(t,x(1:6,i),[u(1,i), n_const],p); % Option 1 only
 %     dxdt_mat(1:6,i) = stateFunc_EO(t,x(1:6,i),[x(7,i), n_const],p); % Option 2 only
 %     dxdt_mat(1:6,i) = stateFunc_EO(t,x(1:6,i),u(1:2,i),p); % Option 3 only
-    dxdt_mat(1:6,i) = stateFunc(t,x(1:6,i),x(7:8,i),p); % Option 4 only
+    dxdt_mat(1:6,i) = stateFunc_EO(t,x(1:6,i),x(7:8,i),p); % Option 4 only
 %     
 
 end

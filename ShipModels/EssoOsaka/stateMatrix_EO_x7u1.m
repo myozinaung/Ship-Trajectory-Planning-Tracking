@@ -7,12 +7,12 @@
 % Control Vector:   u = [delta_dot]
 
 %% 
-function dxdt_mat = stateMatrix_EO_7x1u(t,x,u,p)
+function dxdt_mat = stateMatrix_EO_x7u1(t,x,u,p)
 
 dxdt_mat = x; % Initialize
 n_const = 10; % Constant RPS
 for i = 1:length(t)
-    dxdt_mat(1:6,i) = stateFunc(t,x(1:6,i),[x(7,i), n_const],p);
+    dxdt_mat(1:6,i) = stateFunc_EO(t,x(1:6,i),[x(7,i), n_const],p);
 end
 dxdt_mat(7,:) = u(1,:);
 

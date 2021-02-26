@@ -1,4 +1,4 @@
-function [t_guess, z_guess, u_guess] = guessGenerator(t_ref, t_end, soln, soln_now, Type)
+function [t_guess, z_guess, u_guess] = generateGuess(t_ref, t_end, soln, soln_now, Type)
 
 switch Type
     case 'previous'
