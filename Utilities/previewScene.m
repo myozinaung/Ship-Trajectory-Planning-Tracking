@@ -1,4 +1,0 @@
-function previewScene(obs)
-
-
-end

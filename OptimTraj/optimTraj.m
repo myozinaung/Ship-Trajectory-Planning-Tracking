@@ -183,17 +183,17 @@ while iter <= nIter
 %      end  
 
 
-%     % To remove Objective and Constraints functions in the 1st iteration so that the Problem is easier and fast to solve, probably gives a good guess for Original Problem
-%     if iter == 1 % 
-% %         P.func.bndObj  = [];    % Remove objective function in 1st Calculation/Refinement (MYO)
-%         P.func.pathCst = [];    % Remove constraints in 1st Calculation/Refinement (MYO)
-%         P.func.bndCst  = [];    % Remove constraints in 1st Calculation/Refinement (MYO)
-%         % (MYO) >> More optimal local minimum possible, but solver may stick at initial of 2nd refinement due to sudden Constraints
-%         disp('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~');
-%         disp('Running 1st iteration without Objective and Constraint functions (Only Dyanmics)');
-%     else
-%         P.func = problem.func;
-%     end    
+    % To remove Objective and Constraints functions in the 1st iteration so that the Problem is easier and fast to solve, probably gives a good guess for Original Problem
+    if iter == 1 % 
+%         P.func.bndObj  = [];    % Remove objective function in 1st Calculation/Refinement (MYO)
+        P.func.pathCst = [];    % Remove constraints in 1st Calculation/Refinement (MYO)
+        P.func.bndCst  = [];    % Remove constraints in 1st Calculation/Refinement (MYO)
+        % (MYO) >> More optimal local minimum possible, but solver may stick at initial of 2nd refinement due to sudden Constraints
+        disp('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~');
+        disp('Running 1st iteration without Objective and Constraint functions (Only Dyanmics)');
+    else
+        P.func = problem.func;
+    end    
     
     if P.options.verbose > 0    %then print out iteration count:
         disp('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~');
